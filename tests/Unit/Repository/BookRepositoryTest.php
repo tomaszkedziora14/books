@@ -33,7 +33,6 @@ class BookRepositoryTest extends KernelTestCase
         ;
 
         $this->assertCount(1, [$books]);
-        $this->assertEquals($books, $books);
     }
 
     /**
