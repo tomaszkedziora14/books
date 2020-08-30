@@ -87,16 +87,16 @@ class BookTypeTest extends TypeTestCase
                ->setCategory($formData["category"]);
            ;
 
-          $form->submit($formData);
+         $form->submit($formData);
 
-          $this->assertTrue($form->isSynchronized());
-          $this->assertEquals($bookComparedToForm, $form->getData());
+         $this->assertTrue($form->isSynchronized());
+         $this->assertEquals($bookComparedToForm, $form->getData());
 
-          $view = $form->createView();
-          $children = $view->children;
+         $view = $form->createView();
+         $children = $view->children;
 
-           foreach (array_keys($formData) as $key) {
+         foreach (array_keys($formData) as $key) {
                $this->assertArrayHasKey($key, $children);
-           }
-       }
+         }
+      }
 }
