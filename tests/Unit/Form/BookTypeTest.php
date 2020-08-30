@@ -6,15 +6,9 @@ use App\Entity\Book;
 use App\Entity\Category;
 use App\Form\BookType;
 use Symfony\Component\Form\Test\TypeTestCase;
-use Symfony\Bridge\Doctrine\Form\DoctrineOrmExtension;
-use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bridge\Doctrine\Test\DoctrineTestHelper;
-use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
-use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Validator\Validation;
-use Doctrine\Common\Persistence\ObjectManager;
-
 
 class BookTypeTest extends TypeTestCase
 {

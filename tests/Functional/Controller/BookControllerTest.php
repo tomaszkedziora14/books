@@ -26,7 +26,6 @@ class BookControllerTest extends WebTestCase
     	    	  ];
 	     });
 
-
        $numPage = $pages[1]['numPage'];
 
        $link = $crawler->filter('.pagination, .page, a')->link();
