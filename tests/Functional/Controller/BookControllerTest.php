@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 use App\Repository\BookRepository;
 
-class PostControllerTest extends WebTestCase
+class BookControllerTest extends WebTestCase
 {
     public function testIndex()
     {
@@ -26,7 +26,7 @@ class PostControllerTest extends WebTestCase
     	    	  ];
 	        });
 
-    
+
        $numPage = $pages[1]['numPage'];
 
        $link = $crawler->filter('.pagination, .page, a')->link();
