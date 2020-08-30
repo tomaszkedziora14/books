@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+
+    <a href="{{ path('book_create') }}" class="btn btn-primary" id="deleteBook" role="button">Create Book</a>
+
+    <table class="table  table-bordered table-sm table-hover">
+        <thead class="thead-light">
+        <tr>
+            <th>Books</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for book in book %}
+                <tr>
+                  <td>{{ book.title }}</td>
+                  <td>{{ book.author }}</td>
+                  <td><a href="{{ path('book_edit',{'id': book.id}) }}"  class="btn btn-success" role="button">edit Book</a>
+                  <td><a href="{{ path('book_delete',{'id': book.id}) }}" id="delete-book" class="btn btn-danger" role="button">delete Book</a>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="navigation">
+    {{ knp_pagination_render(book) }}
+</div>
+
+{% endblock %}
