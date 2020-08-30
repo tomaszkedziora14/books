@@ -46,16 +46,15 @@ class BookController extends AbstractController
   {
       $book = new Book();
 
-
       $form = $this->createForm(BookType::class, $book);
       $form->handleRequest($request);
 
       if ($form->isSubmitted() && $form->isValid()) {
-  $category = new Category();
-        //  $book = $form->getData();
-          $category->addBook($book);
+          
+          $book = $form->getData();
+          
           $em = $this->getDoctrine()->getManager();
-          $em->persist($category);
+          $em->persist($book);
           $em->flush();
 
           return $this->redirectToRoute('book_list');
