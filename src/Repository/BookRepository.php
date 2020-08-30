@@ -24,11 +24,11 @@ class BookRepository extends ServiceEntityRepository
   *
   * @return array|\Doctrine\ORM\Query
   */
-  public function getAll($query = false)
+  public function findAll($query = false)
   {
     $queryBuilder = $this->createQueryBuilder('b')
               ->orderBy('b.title', 'ASC');
-              
+
     if ($query) {
         return $queryBuilder->getQuery();
     }

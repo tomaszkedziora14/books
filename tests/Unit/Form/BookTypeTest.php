@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Validation;
 
 class BookTypeTest extends TypeTestCase
 {
-
+  
     /**
     * @var \Doctrine\ORM\EntityManager
     */

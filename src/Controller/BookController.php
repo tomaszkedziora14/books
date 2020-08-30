@@ -24,7 +24,7 @@ class BookController extends AbstractController
         PaginatorInterface $paginator,
         BookRepository $bookRepository
     ) {
-        $book = $bookRepository->getAll(true);
+        $book = $bookRepository->findAll(true);
 
         $paginatorBook = $paginator->paginate(
              $book,
