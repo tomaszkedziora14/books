@@ -78,7 +78,6 @@ class BookTypeTest extends TypeTestCase
               "category" => $category
         ];
 
-         $form = $this->factory->create(BookType::class);
 
          $bookComparedToForm = new Book();
          $bookComparedToForm
@@ -86,11 +85,15 @@ class BookTypeTest extends TypeTestCase
                ->setAuthor($formData["author"])
                ->setCategory($formData["category"]);
            ;
+      
+         $bookHandledByForm = new Book();
+      
+         $form = $this->factory->create(BookType::class,$bookHandledByForm );
 
          $form->submit($formData);
 
          $this->assertTrue($form->isSynchronized());
-         $this->assertEquals($bookComparedToForm, $form->getData());
+         $this->assertEquals($bookComparedToForm, $bookHandledByForm);
 
          $view = $form->createView();
          $children = $view->children;
