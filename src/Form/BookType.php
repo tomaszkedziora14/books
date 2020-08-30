@@ -13,7 +13,6 @@ use Doctrine\ORM\EntityRepository;
 use App\Entity\Category;
 use App\Entity\Book;
 
-
 class BookType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -22,13 +21,13 @@ class BookType extends AbstractType
             ->add('title', TextType::class)
             ->add('author', TextType::class)
             ->add('category', EntityType::class, [
-              'class' => Category::class,
-              'query_builder' => function (EntityRepository $er) {
-                  return $er->createQueryBuilder('c')
-                      ->orderBy('c.name', 'ASC');
-              },
-              'choice_label' => 'name',
-          ])
+                  'class' => Category::class,
+                  'query_builder' => function (EntityRepository $er) {
+                      return $er->createQueryBuilder('c')
+                          ->orderBy('c.name', 'ASC');
+                  },
+                  'choice_label' => 'name',
+            ])
             ->add('save', SubmitType::class)
         ;
     }
