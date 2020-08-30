@@ -19,12 +19,12 @@ class BookControllerTest extends WebTestCase
        $crawler = $client->request('GET', '/books-list?page=2');
 
        $pages = $crawler->filter('.pagination, .current')->each(function ($node) {
-    	        return [
+    	 return [
       	    		'url' => $node->attr('href'),
       	    		'numPage' => trim($node->text()),
       	    		'html' => trim($node->html()),
     	    	  ];
-	        });
+	     });
 
 
        $numPage = $pages[1]['numPage'];
