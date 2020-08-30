@@ -78,7 +78,6 @@ class BookTypeTest extends TypeTestCase
               "category" => $category
         ];
 
-
          $bookComparedToForm = new Book();
          $bookComparedToForm
                ->setTitle($formData["title"])
