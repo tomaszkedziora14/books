@@ -11,13 +11,11 @@ class BookControllerTest extends WebTestCase
     public function testIndex()
     {
        $client = static::createClient();
-
+	    
        $crawler = $client->request('GET', '/books-list');
-
-       $countPage = $crawler->filter('.pagination, .page')->count();
-
+	    
+       $countPages = $crawler->filter('.pagination, .page')->count();
        $crawler = $client->request('GET', '/books-list?page=2');
-
        $pages = $crawler->filter('.pagination, .current')->each(function ($node) {
            return [
       	    	     'url' => $node->attr('href'),
@@ -32,7 +30,7 @@ class BookControllerTest extends WebTestCase
        $crawler = $client->click($link);
 
        $this->assertSame("2", $numPage);
-       $this->assertSame(3, $countPage);
+       $this->assertSame(3, $countPages);
        $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
 
@@ -40,7 +38,9 @@ class BookControllerTest extends WebTestCase
     {
         $bookTitle = "test1";
         $bookAuthor = "test1";
+	    
         $client = static::createClient();
+	    
         $crawler = $client->request('GET', '/book/create');
 
         $title = 'test1';
@@ -52,11 +52,10 @@ class BookControllerTest extends WebTestCase
         ]);
 
         $client->submit($form);
+	
+	$book = self::$container->get(BookRepository::class)->findOneByTitle($bookTitle);
 
         $this->assertResponseRedirects('/books-list', Response::HTTP_FOUND);
-
-            /** @var \App\Entity\Book $book */
-        $book = self::$container->get(BookRepository::class)->findOneByTitle($bookTitle);
         $this->assertNotNull($book);
         $this->assertSame($bookTitle, $book->getTitle());
         $this->assertSame($bookAuthor, $book->getAuthor());
@@ -74,17 +73,17 @@ class BookControllerTest extends WebTestCase
         ]);
 
         $client->submit($form);
+	
+	$book = self::$container->get(BookRepository::class)->find(1);
 
         $this->assertResponseRedirects('/books-list', Response::HTTP_FOUND);
-
-        /** @var \App\Entity\Post $post */
-        $book = self::$container->get(BookRepository::class)->find(1);
         $this->assertSame($newTitle , $book->getTitle());
     }
 
     public function testDelete()
     {
         $client = static::createClient();
+	    
         $crawler = $client->request('GET', '/book/remove/1');
 
         $link = $crawler->filter('#deleteBook, a')->link();
