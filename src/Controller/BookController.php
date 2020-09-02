@@ -12,12 +12,10 @@ use App\Form\BookType;
 use Knp\Component\Pager\PaginatorInterface;
 use App\Repository\BookRepository;
 
-
 class BookController extends AbstractController
 {
     /**
      * @Route("/books-list", name="book_list")
-
      */
     public function index(
         Request $request,
@@ -36,7 +34,7 @@ class BookController extends AbstractController
         ]);
     }
 
-    /**
+   /**
    * @Route("/book/create", name="book_create")
    *
    * @param Request $request
@@ -45,18 +43,14 @@ class BookController extends AbstractController
   public function create(Request $request)
   {
       $book = new Book();
-
       $form = $this->createForm(BookType::class, $book);
       $form->handleRequest($request);
 
       if ($form->isSubmitted() && $form->isValid()) {
-          
           $book = $form->getData();
-          
           $em = $this->getDoctrine()->getManager();
           $em->persist($book);
           $em->flush();
-
           return $this->redirectToRoute('book_list');
       }
 
@@ -87,9 +81,7 @@ class BookController extends AbstractController
 
       if ($form->isSubmitted() && $form->isValid()) {
           $em = $this->getDoctrine()->getManager()->flush();
-
           $this->addFlash('success', 'you udpated book');
-
           return $this->redirectToRoute('book_list');
       }
 
