@@ -10,8 +10,7 @@ class BookControllerTest extends WebTestCase
 {
     public function testIndex()
     {
-       $client = static::createClient();
-	    
+       $client = static::createClient();   
        $crawler = $client->request('GET', '/books-list');
 	    
        $countPages = $crawler->filter('.pagination, .page')->count();
@@ -40,7 +39,6 @@ class BookControllerTest extends WebTestCase
         $author = 'test1';
 	    
         $client = static::createClient();
-	    
         $crawler = $client->request('GET', '/book/create');
 
         $form = $crawler->selectButton('Save')->form([
@@ -79,8 +77,7 @@ class BookControllerTest extends WebTestCase
 
     public function testDelete()
     {
-        $client = static::createClient();
-	    
+        $client = static::createClient();  
         $crawler = $client->request('GET', '/book/remove/1');
 
         $link = $crawler->filter('#deleteBook, a')->link();
