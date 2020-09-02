@@ -36,15 +36,12 @@ class BookControllerTest extends WebTestCase
 
     public function testCreate()
     {
-        $bookTitle = "test1";
-        $bookAuthor = "test1";
+	$title = 'test1';
+        $author = 'test1';
 	    
         $client = static::createClient();
 	    
         $crawler = $client->request('GET', '/book/create');
-
-        $title = 'test1';
-        $author = 'test1';
 
         $form = $crawler->selectButton('Save')->form([
           'book[title]' => $title,
@@ -57,8 +54,8 @@ class BookControllerTest extends WebTestCase
 
         $this->assertResponseRedirects('/books-list', Response::HTTP_FOUND);
         $this->assertNotNull($book);
-        $this->assertSame($bookTitle, $book->getTitle());
-        $this->assertSame($bookAuthor, $book->getAuthor());
+        $this->assertSame($title, $book->getTitle());
+        $this->assertSame($author, $book->getAuthor());
     }
 
     public function testEdit()
