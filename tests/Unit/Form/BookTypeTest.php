@@ -64,7 +64,6 @@ class BookTypeTest extends TypeTestCase
         return $mockEntityType;
     }
 
-
     public function testFormType() : void
     {
 
