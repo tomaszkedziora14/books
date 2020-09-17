@@ -81,7 +81,6 @@ class BookController extends AbstractController
 
       if ($form->isSubmitted() && $form->isValid()) {
           $em = $this->getDoctrine()->getManager()->flush();
-          $this->addFlash('success', 'you udpated book');
           return $this->redirectToRoute('book_list');
       }
 
