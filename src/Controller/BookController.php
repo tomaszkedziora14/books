@@ -72,7 +72,7 @@ class BookController extends AbstractController
   ) {
       if (!$book) {
             throw $this->createNotFoundException(
-                'There are no book with the following id: ' . $id
+                'There are no book with the following id: ' . $book->getId()
             );
       }
 
