@@ -31,7 +31,6 @@ class Category
 
     public function __construct()
     {
-        $this->books = new ArrayCollection();
         $this->book = new ArrayCollection();
     }
 
