@@ -34,7 +34,7 @@ class BookController extends AbstractController
         ]);
     }
 
-   /**
+  /**
    * @Route("/book/create", name="book_create")
    *
    * @param Request $request
@@ -89,7 +89,7 @@ class BookController extends AbstractController
       ]);
   }
 
-      /**
+   /**
     * @Route("/book/remove/{id}", name="book_delete")
     *
     * @param Request $request
